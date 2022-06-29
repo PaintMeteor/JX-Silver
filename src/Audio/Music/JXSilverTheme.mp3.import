@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/JXSilverTheme.mp3-30a922b443ae8d37e2e389c89c8d65a0.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/JXSilverTheme.mp3"
+dest_files=[ "res://.import/JXSilverTheme.mp3-30a922b443ae8d37e2e389c89c8d65a0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

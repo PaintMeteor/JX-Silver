@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/UI/ModeButton.gd" type="Script" id=1]
+[ext_resource path="res://UIThemes/MainUITheme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/UI/ResetScores.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/UI/ModeMain.gd" type="Script" id=4]
+[ext_resource path="res://Images/DecoratedBG.png" type="Texture" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+margin_right = 400.0
+margin_bottom = 640.0
+texture = ExtResource( 5 )
+
+[node name="ButtonList" type="Control" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control/ButtonList"]
+margin_left = 24.0
+margin_top = 328.0
+margin_right = 200.0
+margin_bottom = 376.0
+focus_neighbour_bottom = NodePath("../Button2")
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Endless Mode"
+script = ExtResource( 1 )
+desc = "Classic gameplay. Try to go as far as you can."
+mode = "endless"
+
+[node name="Button2" type="Button" parent="Control/ButtonList"]
+margin_left = 24.0
+margin_top = 392.0
+margin_right = 200.0
+margin_bottom = 440.0
+focus_neighbour_top = NodePath("../Button")
+focus_neighbour_bottom = NodePath("../Button3")
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Challenge Mode"
+script = ExtResource( 1 )
+desc = "Defeat as many waves in the shortest amount of time. Collect timer powerups to extend the time limit."
+mode = "challenge"
+
+[node name="Button3" type="Button" parent="Control/ButtonList"]
+margin_left = 24.0
+margin_top = 456.0
+margin_right = 200.0
+margin_bottom = 504.0
+focus_neighbour_top = NodePath("../Button2")
+focus_neighbour_bottom = NodePath("../Button")
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Treasure Mode"
+script = ExtResource( 1 )
+desc = "Collect as many silver shards as you can."
+mode = "treasure"
+
+[node name="Button4" type="Button" parent="Control/ButtonList"]
+margin_left = 24.0
+margin_top = 568.0
+margin_right = 136.0
+margin_bottom = 592.0
+theme = ExtResource( 2 )
+text = "Clear high scores"
+script = ExtResource( 3 )
+
+[node name="ModeDescription" type="Label" parent="Control"]
+margin_left = 64.0
+margin_top = 80.0
+margin_right = 320.0
+margin_bottom = 144.0
+size_flags_stretch_ratio = 1.15
+text = "Select game mode."
+align = 1
+autowrap = true
+clip_text = true
+
+[node name="Best Score" type="Label" parent="Control"]
+margin_left = 64.0
+margin_top = 152.0
+margin_right = 148.0
+margin_bottom = 200.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Best score: 0"
+
+[connection signal="pressed" from="Control/ButtonList/Button4" to="Control/ButtonList/Button4" method="_on_Button4_pressed"]

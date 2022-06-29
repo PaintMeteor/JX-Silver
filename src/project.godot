@@ -1,0 +1,177 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/EnemyScript/EnScript.gd"
+}, {
+"base": "Area2D",
+"class": "EnemyBullet",
+"language": "GDScript",
+"path": "res://Scripts/EnemyScript/EnBulletScript.gd"
+}, {
+"base": "Enemy",
+"class": "FirstEnemy",
+"language": "GDScript",
+"path": "res://Scripts/EnemyScript/Enemy.gd"
+}, {
+"base": "Node",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://Scripts/GameModes.gd"
+}, {
+"base": "Area2D",
+"class": "HealthPowerup",
+"language": "GDScript",
+"path": "res://Scripts/Powerups/Heart.gd"
+}, {
+"base": "Area2D",
+"class": "PlayerOb",
+"language": "GDScript",
+"path": "res://Scripts/Player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "ScManager",
+"language": "GDScript",
+"path": "res://Objects/SceneManagerScript.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Silver",
+"language": "GDScript",
+"path": "res://Scripts/Powerups/Silver.gd"
+}, {
+"base": "Node2D",
+"class": "SpriteParticle2D",
+"language": "GDScript",
+"path": "res://Objects/Enemies/ExplosionParticle.gd"
+}, {
+"base": "RigidBody2D",
+"class": "TimePowerup",
+"language": "GDScript",
+"path": "res://Scripts/Powerups/Time.gd"
+}, {
+"base": "Node2D",
+"class": "game",
+"language": "GDScript",
+"path": "res://Scripts/Main/WorldScript.gd"
+}, {
+"base": "Area2D",
+"class": "player_bullet",
+"language": "GDScript",
+"path": "res://Scripts/Player/PlayerBullet.gd"
+}, {
+"base": "Node2D",
+"class": "spawners",
+"language": "GDScript",
+"path": "res://Scripts/EnemyScript/Spawners.gd"
+} ]
+_global_script_class_icons={
+"Enemy": "",
+"EnemyBullet": "",
+"FirstEnemy": "",
+"GameManager": "",
+"HealthPowerup": "",
+"PlayerOb": "",
+"ScManager": "",
+"Silver": "",
+"SpriteParticle2D": "",
+"TimePowerup": "",
+"game": "",
+"player_bullet": "",
+"spawners": ""
+}
+
+[application]
+
+config/name="J-X Silver"
+run/main_scene="res://Layouts/Intro.tscn"
+boot_splash/bg_color=Color( 0.145098, 0.145098, 0.145098, 1 )
+config/icon="res://Images/Title/JXSilverLogoGd.png"
+config/windows_native_icon="res://JXSilverLogo.ico"
+
+[autoload]
+
+GameModes="*res://Scripts/GameModes.gd"
+GameMusic="*res://Objects/GameMusic.tscn"
+SceneManager="*res://Objects/SceneManager.tscn"
+
+[display]
+
+window/size/width=400
+window/size/height=640
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[input]
+
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_render/layer_1="BG"
+2d_render/layer_2="game"
+2d_render/layer_3="UI"
+2d_physics/layer_1="BG"
+2d_physics/layer_2="playerBullets"
+2d_physics/layer_3="player"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="enemyBullets"
+2d_physics/layer_6="Powerups"
+
+[network]
+
+limits/tcp/connect_timeout_seconds=23
+
+[physics]
+
+common/enable_pause_aware_picking=true
+2d/default_gravity=180
+
+[rendering]
+
+quality/filters/sharpen_intensity=0.63
+2d/snapping/use_gpu_pixel_snap=true
+vram_compression/import_etc=true
+quality/filters/anisotropic_filter_level=16
+environment/default_environment="res://default_env.tres"

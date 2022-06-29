@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/EnemyScript/FormationScript.gd" type="Script" id=2]
+
+[node name="Formation" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 152 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 104 )
+dive_delay = 0.2
+
+[node name="Enemy3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 152 )
+dive_delay = 0.7
+
+[node name="Enemy4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 104 )
+dive_delay = 0.5
+
+[node name="Enemy5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64, 126 )
+dive_delay = 0.1
+
+[node name="Enemy6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 80 )
+elite = true
+dive_delay = 0.3
+
+[node name="Enemy7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 80 )
+elite = true
+dive_delay = 0.4
+
+[node name="Enemy8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 128 )
+dive_delay = 0.6

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/JXSilverMenu2.mp3-4b8c1a5b61d2225468efb97f8f544832.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/JXSilverMenu2.mp3"
+dest_files=[ "res://.import/JXSilverMenu2.mp3-4b8c1a5b61d2225468efb97f8f544832.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

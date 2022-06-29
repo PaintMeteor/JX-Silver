@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/Title/JXSvr.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Title/TitleScreen.gd" type="Script" id=3]
+[ext_resource path="res://Images/BG/SpaceBGTwo.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Startup"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( -400, 0 ), Vector2( -400, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:start")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+start = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 400.0
+margin_bottom = 640.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+margin_right = 600.0
+margin_bottom = 900.0
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../..")
+playback_speed = 0.5
+anims/Startup = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Control"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 200, 208 )
+scale = Vector2( 0.3, 0.3 )
+z_index = 5
+texture = ExtResource( 2 )
+offset = Vector2( -400, 0 )

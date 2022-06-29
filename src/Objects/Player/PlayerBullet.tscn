@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Images/Player/Particles/CubeParticle.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player/PlayerBullet.gd" type="Script" id=2]
+[ext_resource path="res://Audio/Player/LaserFireTwo.wav" type="AudioStream" id=3]
+[ext_resource path="res://Images/Player/Bullet/NewMandBullet.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 8.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Destroy"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParticleExplosion:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:bullet_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Regular"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.994475, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0.0944444 )
+
+[node name="PlayerBullet" type="Area2D" groups=["PBullet"]]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Destroy = SubResource( 2 )
+anims/Regular = SubResource( 3 )
+
+[node name="ParticleExplosion" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 23
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.92
+texture = ExtResource( 1 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 8 )
+initial_velocity = 201.84
+initial_velocity_random = 1.0
+angular_velocity = 601.1
+angular_velocity_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle = 132.1
+angle_random = 0.54
+scale_amount = 0.1
+scale_amount_random = 0.57
+color_ramp = SubResource( 4 )
+hue_variation = -0.29
+hue_variation_random = 0.54
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -9.521
+
+[connection signal="area_entered" from="." to="." method="_on_PlayerBullet_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
